@@ -335,7 +335,7 @@ function LandingContent() {
               AI-READY KNOWLEDGE SHARING
             </div>
 
-            <h1 className="font-heading font-bold leading-[1.08] tracking-[-0.03em] mb-[18px]"
+            <h1 className="font-heading font-bold leading-[1.08] mb-[18px]"
               style={{ fontSize: 'clamp(42px, 4.8vw, 66px)', color: '#16163D' }}>
               One link.<br />
               <em className="italic not-italic" style={{ color: '#FF2A6D', fontStyle: 'italic' }}>Infinite AI conversations.</em>
@@ -733,7 +733,7 @@ function LandingContent() {
         <div className="text-xs font-bold uppercase tracking-widest mb-3" style={{ color: '#8B8BA8', letterSpacing: '0.12em' }}>
           How It Works
         </div>
-        <h2 className="font-heading font-bold leading-tight tracking-[-0.02em] mb-3" style={{
+        <h2 className="font-heading font-bold leading-tight mb-3" style={{
           fontSize: 'clamp(32px, 3.5vw, 48px)',
           color: '#16163D',
         }}>
@@ -808,7 +808,7 @@ function LandingContent() {
         <div className="text-xs font-bold uppercase tracking-widest mb-3" style={{ color: '#8B8BA8', letterSpacing: '0.12em' }}>
           Use Cases
         </div>
-        <h2 className="font-heading font-bold leading-tight tracking-[-0.02em] mb-3" style={{
+        <h2 className="font-heading font-bold leading-tight mb-3" style={{
           fontSize: 'clamp(32px, 3.5vw, 48px)',
           color: '#16163D',
         }}>
@@ -854,7 +854,7 @@ function LandingContent() {
       <section className="relative z-10 px-6 py-[60px] max-w-[1200px] mx-auto w-full" style={{ background: '#FCF9F2' }}>
         <div className="text-center max-w-[600px] mx-auto">
           <div className="text-xs font-bold uppercase tracking-widest mb-3" style={{ color: '#8B8BA8', letterSpacing: '0.12em' }}>Trust</div>
-          <h2 className="font-heading font-bold leading-tight tracking-[-0.02em] mb-4" style={{ fontSize: 'clamp(28px, 3vw, 42px)', color: '#16163D' }}>
+          <h2 className="font-heading font-bold leading-tight mb-4" style={{ fontSize: 'clamp(28px, 3vw, 42px)', color: '#16163D' }}>
             Private. <span style={{ color: '#FF2A6D', fontStyle: 'italic' }}>No catch.</span>
           </h2>
           <p className="text-base leading-relaxed mb-6" style={{ color: '#4A4A6A' }}>

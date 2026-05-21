@@ -176,7 +176,7 @@ export function TabbedExperience() {
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-[60px] items-start mt-12">
           {/* Left: static content */}
           <div className="anim-up space-y-6" style={{ '--delay': '0.1s' } as React.CSSProperties}>
-            <h2 className="font-heading font-bold leading-tight tracking-[-0.02em]" style={{
+            <h2 className="font-heading font-bold leading-tight" style={{
               fontSize: 'clamp(32px, 3.5vw, 48px)',
               color: C.navy,
             }}>
