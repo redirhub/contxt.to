@@ -15,6 +15,7 @@ interface ContextView {
 
 export function BrowserContextPage({ context, url }: { context: ContextView; url: string }) {
   const [copied, setCopied] = useState(false)
+  const [contentCopied, setContentCopied] = useState(false)
 
   async function copyUrl() {
     const text = `Read and discuss this contxt link: ${url}`
@@ -30,6 +31,21 @@ export function BrowserContextPage({ context, url }: { context: ContextView; url
     }
     setCopied(true)
     setTimeout(() => setCopied(false), 1800)
+  }
+
+  async function copyContent() {
+    try {
+      await navigator.clipboard.writeText(context.content)
+    } catch {
+      const ta = document.createElement('textarea')
+      ta.value = context.content
+      document.body.appendChild(ta)
+      ta.select()
+      document.execCommand('copy')
+      document.body.removeChild(ta)
+    }
+    setContentCopied(true)
+    setTimeout(() => setContentCopied(false), 1800)
   }
 
   const encodedUrl = encodeURIComponent(url)
@@ -162,8 +178,28 @@ export function BrowserContextPage({ context, url }: { context: ContextView; url
 
         {/* Content section */}
         {context.content && (
-          <div className="w-full mt-8">
-            <CardContent className="prose prose-sm prose-slate max-w-none bg-white rounded-[16px] border border-[#e8e8f0] p-6 shadow-sm">
+          <div className="w-full mt-8 relative">
+            <button
+              onClick={copyContent}
+              className={`absolute top-3 right-3 z-10 flex items-center gap-1.5 px-3 py-1.5 rounded-[8px] border text-[0.72rem] font-semibold cursor-pointer transition-all duration-150 font-inherit whitespace-nowrap ${
+                contentCopied
+                  ? 'bg-[#10a37f] text-white border-[#10a37f]'
+                  : 'bg-white text-[#6b6b80] border-[#e8e8f0] hover:bg-[#f8f9fc] hover:text-[#1a1a2e] hover:border-[#d0d0de]'
+              }`}
+            >
+              {contentCopied ? (
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg>
+              ) : (
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <rect x="9" y="9" width="13" height="13" rx="2" ry="2" />
+                  <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+                </svg>
+              )}
+              {contentCopied ? 'Copied!' : 'Copy'}
+            </button>
+            <CardContent className="prose prose-sm prose-slate max-w-none bg-white rounded-[16px] border border-[#e8e8f0] p-6 shadow-sm pt-12 sm:pt-6">
               <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeHighlight, rehypeSanitize]}>
                 {context.content}
               </ReactMarkdown>
