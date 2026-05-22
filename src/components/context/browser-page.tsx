@@ -118,38 +118,28 @@ export function BrowserContextPage({ context, url }: { context: ContextView; url
 
           <div className="h-px bg-[#e8e8f0] my-6" />
 
-          {/* ═══ Copy & Paste (primary action) ═══ */}
-          <div className="mb-6">
-            <div className="text-[0.72rem] font-semibold uppercase tracking-wider text-[#9595aa] mb-3">
-              Copy & paste into any AI
-            </div>
-            <div
-              className="flex items-center gap-2 p-3.5 px-4 rounded-[12px] border-2 border-[#10a37f]/20 bg-[#e6f7f2] cursor-pointer transition-all duration-200 hover:border-[#10a37f]/40 hover:bg-[#d6f0ea] active:scale-[0.99] sm:flex-nowrap flex-wrap"
-              onClick={copyUrl}
+          {/* ═══ Copy + AI Links (merged) ═══ */}
+          <div
+            className="flex items-center gap-2 p-3.5 px-4 rounded-[12px] border-2 border-[#10a37f]/20 bg-[#e6f7f2] cursor-pointer transition-all duration-200 hover:border-[#10a37f]/40 hover:bg-[#d6f0ea] active:scale-[0.99] sm:flex-nowrap flex-wrap mb-4"
+            onClick={copyUrl}
+          >
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#10a37f" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="flex-shrink-0">
+              <path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/>
+              <path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/>
+            </svg>
+            <span className="flex-1 text-xs font-medium text-[#1a1a2e] break-all min-w-0">
+              Read and discuss this contxt link: {url}
+            </span>
+            <button
+              className={`px-4 py-1.5 rounded-[8px] border-none text-[0.72rem] font-semibold cursor-pointer transition-all duration-150 font-inherit whitespace-nowrap ${
+                copied
+                  ? 'bg-[#10a37f] text-white'
+                  : 'bg-white text-[#10a37f] border border-[#10a37f]/30 hover:bg-[#10a37f] hover:text-white'
+              }`}
+              onClick={(e) => { e.stopPropagation(); copyUrl(); }}
             >
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#10a37f" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="flex-shrink-0">
-                <path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/>
-                <path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/>
-              </svg>
-              <span className="flex-1 text-xs font-medium text-[#1a1a2e] break-all min-w-0">
-                Read and discuss this contxt link: {url}
-              </span>
-              <button
-                className={`px-4 py-1.5 rounded-[8px] border-none text-[0.72rem] font-semibold cursor-pointer transition-all duration-150 font-inherit whitespace-nowrap ${
-                  copied
-                    ? 'bg-[#10a37f] text-white'
-                    : 'bg-white text-[#10a37f] border border-[#10a37f]/30 hover:bg-[#10a37f] hover:text-white'
-                }`}
-                onClick={(e) => { e.stopPropagation(); copyUrl(); }}
-              >
-                {copied ? 'Copied!' : 'Copy'}
-              </button>
-            </div>
-          </div>
-
-          {/* ═══ AI Quick Links (secondary) ═══ */}
-          <div className="text-[0.72rem] font-semibold uppercase tracking-wide text-[#9595aa] mb-3">
-            Or open directly in
+              {copied ? 'Copied!' : 'Copy'}
+            </button>
           </div>
 
           <div className="flex flex-col gap-2">
