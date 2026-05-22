@@ -400,7 +400,7 @@ function LandingContent() {
                       Share AI Chat → One Link
                     </div>
                     <div className="text-[13px] leading-relaxed mb-4" style={{ color: '#8B8BA8' }}>
-                      Paste into ChatGPT / Gemini and tap Continue:
+                      Paste into ChatGPT, Gemini, or Claude and they'll read your page:
                       <code className="block text-[13px] leading-relaxed font-medium p-2.5 mt-2 rounded-[8px] border"
                         style={{
                           background: 'rgba(255, 42, 109, 0.06)',
@@ -410,29 +410,34 @@ function LandingContent() {
                         {`read ${baseUrl} and shorten this chat and create a shareable link`}
                       </code>
                     </div>
-                    <div className="flex gap-2">
-                      <a href={`https://chatgpt.com/?q=${encodeURIComponent('read ' + baseUrl + ' and shorten this chat and create a shareable link')}`}
-                        target="_blank" rel="noopener noreferrer"
-                        className="flex-1 flex items-center justify-center gap-1.5 px-3.5 py-2 rounded-[14px] text-[13px] font-semibold border no-underline cursor-pointer transition-all font-inherit"
-                        style={{ background: '#FFFFFF', borderColor: '#E8E3D8', color: '#4A4A6A' }}
-                        onMouseEnter={(e) => { e.currentTarget.style.borderColor = '#FF2A6D'; e.currentTarget.style.color = '#FF2A6D'; e.currentTarget.style.background = 'rgba(255, 42, 109, 0.06)' }}
-                        onMouseLeave={(e) => { e.currentTarget.style.borderColor = '#E8E3D8'; e.currentTarget.style.color = '#4A4A6A'; e.currentTarget.style.background = '#FFFFFF' }}>
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
-                          <path d="M22.281 2.719a3 3 0 0 0-3.04-.602L3.166 8.356a3 3 0 0 0-.16 5.528l6.047 3.14 3.142 6.046a3 3 0 0 0 5.528-.16l6.24-18.074a3 3 0 0 0-.602-3.04z" />
+                    <button
+                      onClick={() => {
+                        navigator.clipboard.writeText(`read ${baseUrl} and shorten this chat and create a shareable link`)
+                        setCopied(true)
+                        setTimeout(() => setCopied(false), 2000)
+                      }}
+                      className="w-full flex items-center justify-center gap-2 px-4 py-2.5 rounded-[12px] text-[13px] font-semibold border-none cursor-pointer transition-all font-inherit text-white"
+                      style={{
+                        background: '#FF2A6D',
+                        boxShadow: '0 4px 16px rgba(255, 42, 109, 0.25)',
+                      }}
+                      onMouseEnter={(e) => { if (!copied) { e.currentTarget.style.background = '#E61D5C' } }}
+                      onMouseLeave={(e) => { if (!copied) { e.currentTarget.style.background = '#FF2A6D' } }}
+                    >
+                      {copied ? (
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                          <polyline points="20 6 9 17 4 12" />
                         </svg>
-                        Continue in ChatGPT
-                      </a>
-                      <a href={`https://gemini.google.com/?q=${encodeURIComponent('read ' + baseUrl + ' and shorten this chat and create a shareable link')}`}
-                        target="_blank" rel="noopener noreferrer"
-                        className="flex-1 flex items-center justify-center gap-1.5 px-3.5 py-2 rounded-[14px] text-[13px] font-semibold border no-underline cursor-pointer transition-all font-inherit"
-                        style={{ background: '#FFFFFF', borderColor: '#E8E3D8', color: '#4A4A6A' }}
-                        onMouseEnter={(e) => { e.currentTarget.style.borderColor = '#FF2A6D'; e.currentTarget.style.color = '#FF2A6D'; e.currentTarget.style.background = 'rgba(255, 42, 109, 0.06)' }}
-                        onMouseLeave={(e) => { e.currentTarget.style.borderColor = '#E8E3D8'; e.currentTarget.style.color = '#4A4A6A'; e.currentTarget.style.background = '#FFFFFF' }}>
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
-                          <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+                      ) : (
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                          <rect x="9" y="9" width="13" height="13" rx="2" ry="2" />
+                          <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
                         </svg>
-                        Continue in Gemini
-                      </a>
+                      )}
+                      {copied ? 'Copied!' : 'Copy Prompt'}
+                    </button>
+                    <div className="text-center text-[12px] mt-2.5 font-medium" style={{ color: '#8B8BA8' }}>
+                      Then paste into any AI chat
                     </div>
                   </div>
                 </div>
@@ -440,7 +445,7 @@ function LandingContent() {
                 {/* Divider */}
                 <div className="flex items-center gap-3 my-5">
                   <div className="flex-1 h-px" style={{ background: '#F0EDE4' }} />
-                  <span className="text-xs font-medium whitespace-nowrap" style={{ color: '#8B8BA8' }}>or paste manually</span>
+                  <span className="text-[11px] font-semibold uppercase tracking-wider whitespace-nowrap" style={{ color: '#8B8BA8', letterSpacing: '0.08em' }}>OR PASTE MANUALLY</span>
                   <div className="flex-1 h-px" style={{ background: '#F0EDE4' }} />
                 </div>
 
