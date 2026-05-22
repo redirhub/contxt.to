@@ -124,14 +124,14 @@ export function BrowserContextPage({ context, url }: { context: ContextView; url
               Copy & paste into any AI
             </div>
             <div
-              className="flex items-center gap-2 p-3.5 px-4 rounded-[12px] border-2 border-[#10a37f]/20 bg-[#e6f7f2] cursor-pointer transition-all duration-200 hover:border-[#10a37f]/40 hover:bg-[#d6f0ea] active:scale-[0.99]"
+              className="flex items-center gap-2 p-3.5 px-4 rounded-[12px] border-2 border-[#10a37f]/20 bg-[#e6f7f2] cursor-pointer transition-all duration-200 hover:border-[#10a37f]/40 hover:bg-[#d6f0ea] active:scale-[0.99] sm:flex-nowrap flex-wrap"
               onClick={copyUrl}
             >
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#10a37f" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="flex-shrink-0">
                 <path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/>
                 <path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/>
               </svg>
-              <span className="flex-1 text-xs font-medium text-[#1a1a2e] truncate">
+              <span className="flex-1 text-xs font-medium text-[#1a1a2e] break-all min-w-0">
                 Read and discuss this contxt link: {url}
               </span>
               <button
