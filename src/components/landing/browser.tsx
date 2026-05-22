@@ -532,16 +532,17 @@ function LandingContent() {
           <div className="text-[10px] font-bold uppercase tracking-widest mb-8 text-center" style={{ color: '#C4C0B6', letterSpacing: '0.14em' }}>
             Works with every major AI
           </div>
-          <div className="flex flex-wrap justify-center items-center gap-x-10 gap-y-4">
+          <div className="flex flex-wrap justify-center items-center gap-x-12 gap-y-6">
             {[
-              { name: 'ChatGPT', file: 'chatgpt.svg', h: 32 },
-              { name: 'Claude', file: 'claude.svg', h: 20 },
-              { name: 'Gemini', file: 'gemini.svg', h: 26 },
-              { name: 'DeepSeek', file: 'deepseek.svg', h: 26 },
-              { name: 'Grok', file: 'grok.svg', h: 30 },
-            ].map(({ name, file, h }) => (
-              <div key={name} style={{ filter: 'grayscale(1)', opacity: 0.55 }}>
-                <img src={`/logos/${file}`} alt={name} style={{ height: h, width: 'auto', maxWidth: 130 }} loading="lazy" />
+              { name: 'ChatGPT', file: 'chatgpt.svg' },
+              { name: 'Claude', file: 'claude.svg' },
+              { name: 'Gemini', file: 'gemini.svg' },
+              { name: 'DeepSeek', file: 'deepseek.svg' },
+              { name: 'Grok', file: 'grok.svg' },
+            ].map(({ name, file }) => (
+              <div key={name} className="flex flex-col items-center gap-2" style={{ opacity: 0.55 }}>
+                <img src={`/logos/${file}`} alt={name} style={{ height: 28, width: 'auto' }} loading="lazy" />
+                <span className="text-[11px] font-medium" style={{ color: '#4A4A6A' }}>{name}</span>
               </div>
             ))}
           </div>
