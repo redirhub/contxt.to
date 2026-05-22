@@ -102,9 +102,38 @@ export function BrowserContextPage({ context, url }: { context: ContextView; url
 
           <div className="h-px bg-[#e8e8f0] my-6" />
 
-          {/* Continue section */}
-          <div className="text-[0.8rem] font-semibold uppercase tracking-wide text-[#9595aa] mb-3">
-            Continue this conversation in
+          {/* ═══ Copy & Paste (primary action) ═══ */}
+          <div className="mb-6">
+            <div className="text-[0.72rem] font-semibold uppercase tracking-wider text-[#9595aa] mb-3">
+              Copy & paste into any AI
+            </div>
+            <div
+              className="flex items-center gap-2 p-3.5 px-4 rounded-[12px] border-2 border-[#10a37f]/20 bg-[#e6f7f2] cursor-pointer transition-all duration-200 hover:border-[#10a37f]/40 hover:bg-[#d6f0ea] active:scale-[0.99]"
+              onClick={copyUrl}
+            >
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#10a37f" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="flex-shrink-0">
+                <path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/>
+                <path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/>
+              </svg>
+              <span className="flex-1 text-xs font-medium text-[#1a1a2e] truncate">
+                Read and discuss this contxt link: {url}
+              </span>
+              <button
+                className={`px-4 py-1.5 rounded-[8px] border-none text-[0.72rem] font-semibold cursor-pointer transition-all duration-150 font-inherit whitespace-nowrap ${
+                  copied
+                    ? 'bg-[#10a37f] text-white'
+                    : 'bg-white text-[#10a37f] border border-[#10a37f]/30 hover:bg-[#10a37f] hover:text-white'
+                }`}
+                onClick={(e) => { e.stopPropagation(); copyUrl(); }}
+              >
+                {copied ? 'Copied!' : 'Copy'}
+              </button>
+            </div>
+          </div>
+
+          {/* ═══ AI Quick Links (secondary) ═══ */}
+          <div className="text-[0.72rem] font-semibold uppercase tracking-wide text-[#9595aa] mb-3">
+            Or open directly in
           </div>
 
           <div className="flex flex-col gap-2">
@@ -128,30 +157,6 @@ export function BrowserContextPage({ context, url }: { context: ContextView; url
                 </span>
               </a>
             ))}
-          </div>
-
-          {/* Copy area */}
-          <div
-            className="flex items-center gap-2 mt-5 p-2.5 px-3.5 rounded-[10px] border border-dashed border-[#e8e8f0] cursor-pointer transition-all duration-200 hover:border-[#d0d0de] hover:bg-[#fafbfe]"
-            onClick={copyUrl}
-          >
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#9595aa" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="flex-shrink-0">
-              <path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/>
-              <path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/>
-            </svg>
-            <span className="flex-1 text-xs text-[#9595aa] truncate">
-              Read and discuss this contxt link: {url}
-            </span>
-            <button
-              className={`px-3 py-1 rounded-md border-none text-[0.72rem] font-semibold cursor-pointer transition-all duration-150 font-inherit ${
-                copied
-                  ? 'bg-[#10a37f] text-white'
-                  : 'bg-[#f8f9fc] text-[#6b6b80] hover:bg-[#e8e8f0] hover:text-[#1a1a2e]'
-              }`}
-              onClick={(e) => { e.stopPropagation(); copyUrl(); }}
-            >
-              {copied ? 'Copied!' : 'Copy'}
-            </button>
           </div>
         </Card>
 
