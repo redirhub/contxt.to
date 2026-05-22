@@ -389,139 +389,146 @@ function LandingContent() {
 
               <div className="p-6 sm:p-7 font-sans">
 
-                {/* Preview block — always visible */}
+                {/* ═══ Prompt Section ═══ */}
                 <div className="transition-all duration-500">
                   <div className="p-5 rounded-[10px] border" style={{ background: '#FCF9F2', borderColor: '#F0EDE4' }}>
                     <span className="inline-block px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider mb-2"
                       style={{ background: 'rgba(255, 42, 109, 0.06)', color: '#FF2A6D', letterSpacing: '0.06em' }}>
                       💡 Try This Prompt
                     </span>
-                    <div className="text-[17px] font-bold leading-tight mb-1.5" style={{ color: '#16163D' }}>
+                    <div className="text-[17px] font-bold leading-tight mb-3" style={{ color: '#16163D' }}>
                       Share AI Chat → One Link
                     </div>
-                    <div className="text-[13px] leading-relaxed mb-4" style={{ color: '#8B8BA8' }}>
-                      Paste into ChatGPT / Gemini and tap Continue:
-                      <code className="block text-[13px] leading-relaxed font-medium p-2.5 mt-2 rounded-[8px] border"
-                        style={{
-                          background: 'rgba(255, 42, 109, 0.06)',
-                          color: '#FF2A6D',
-                          borderColor: 'rgba(255, 42, 109, 0.1)',
-                        }}>
-                        {`read ${baseUrl} and shorten this chat and create a shareable link`}
-                      </code>
-                    </div>
-                    <div className="flex gap-2">
-                      <a href={`https://chatgpt.com/?q=${encodeURIComponent('read ' + baseUrl + ' and shorten this chat and create a shareable link')}`}
-                        target="_blank" rel="noopener noreferrer"
-                        className="flex-1 flex items-center justify-center gap-1.5 px-3.5 py-2 rounded-[14px] text-[13px] font-semibold border no-underline cursor-pointer transition-all font-inherit"
-                        style={{ background: '#FFFFFF', borderColor: '#E8E3D8', color: '#4A4A6A' }}
-                        onMouseEnter={(e) => { e.currentTarget.style.borderColor = '#FF2A6D'; e.currentTarget.style.color = '#FF2A6D'; e.currentTarget.style.background = 'rgba(255, 42, 109, 0.06)' }}
-                        onMouseLeave={(e) => { e.currentTarget.style.borderColor = '#E8E3D8'; e.currentTarget.style.color = '#4A4A6A'; e.currentTarget.style.background = '#FFFFFF' }}>
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
-                          <path d="M22.281 2.719a3 3 0 0 0-3.04-.602L3.166 8.356a3 3 0 0 0-.16 5.528l6.047 3.14 3.142 6.046a3 3 0 0 0 5.528-.16l6.24-18.074a3 3 0 0 0-.602-3.04z" />
-                        </svg>
-                        Continue in ChatGPT
-                      </a>
-                      <a href={`https://gemini.google.com/?q=${encodeURIComponent('read ' + baseUrl + ' and shorten this chat and create a shareable link')}`}
-                        target="_blank" rel="noopener noreferrer"
-                        className="flex-1 flex items-center justify-center gap-1.5 px-3.5 py-2 rounded-[14px] text-[13px] font-semibold border no-underline cursor-pointer transition-all font-inherit"
-                        style={{ background: '#FFFFFF', borderColor: '#E8E3D8', color: '#4A4A6A' }}
-                        onMouseEnter={(e) => { e.currentTarget.style.borderColor = '#FF2A6D'; e.currentTarget.style.color = '#FF2A6D'; e.currentTarget.style.background = 'rgba(255, 42, 109, 0.06)' }}
-                        onMouseLeave={(e) => { e.currentTarget.style.borderColor = '#E8E3D8'; e.currentTarget.style.color = '#4A4A6A'; e.currentTarget.style.background = '#FFFFFF' }}>
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
-                          <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
-                        </svg>
-                        Continue in Gemini
-                      </a>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Divider */}
-                <div className="flex items-center gap-3 my-5">
-                  <div className="flex-1 h-px" style={{ background: '#F0EDE4' }} />
-                  <span className="text-xs font-medium whitespace-nowrap" style={{ color: '#8B8BA8' }}>or paste manually</span>
-                  <div className="flex-1 h-px" style={{ background: '#F0EDE4' }} />
-                </div>
-
-                {/* Textarea */}
-                <textarea
-                  ref={textareaRef}
-                  value={content}
-                  onChange={(e) => setContent(e.target.value)}
-                  placeholder="Paste your knowledge here..."
-                  maxLength={50000}
-                  rows={3}
-                  className="w-full p-3.5 rounded-[10px] text-sm leading-relaxed outline-none resize-y transition-all font-inherit"
-                  style={{
-                    background: '#FCF9F2',
-                    border: '1px solid #E8E3D8',
-                    color: '#16163D',
-                    minHeight: 70,
-                  }}
-                  onFocus={(e) => { e.currentTarget.style.borderColor = '#FF2A6D'; e.currentTarget.style.boxShadow = '0 0 0 3px rgba(255, 42, 109, 0.12)' }}
-                  onBlur={(e) => { e.currentTarget.style.borderColor = '#E8E3D8'; e.currentTarget.style.boxShadow = 'none' }}
-                />
-
-                {/* Input bar */}
-                <div className="flex items-center justify-between mt-2.5">
-                  <div className="flex items-center gap-3">
-                    <button
-                      onClick={handleCreate}
-                      disabled={pending || generating || !content.trim()}
-                      className="inline-flex items-center gap-2 px-5 py-2 rounded-full text-[14px] font-semibold border-none cursor-pointer transition-all font-inherit disabled:cursor-not-allowed"
+                    <code className="block text-[13px] leading-relaxed font-medium p-2.5 mb-4 rounded-[8px] border"
                       style={{
-                        background: '#FF2A6D',
-                        color: '#fff',
-                        boxShadow: '0 4px 16px rgba(255, 42, 109, 0.25)',
-                        opacity: pending || generating || !content.trim() ? 0.4 : 1,
-                      }}
-                      onMouseEnter={(e) => { if (!pending && !generating && !!content.trim()) { e.currentTarget.style.background = '#E61D5C'; e.currentTarget.style.transform = 'translateY(-2px)'; e.currentTarget.style.boxShadow = '0 8px 28px rgba(255, 42, 109, 0.35)' } }}
-                      onMouseLeave={(e) => { e.currentTarget.style.background = '#FF2A6D'; e.currentTarget.style.transform = 'none'; e.currentTarget.style.boxShadow = '0 4px 16px rgba(255, 42, 109, 0.25)' } }
-                    >
-                      {generating ? (
-                        <>
-                          <span className="inline-block w-[18px] h-[18px] border-2 rounded-full animate-spin" style={{ borderColor: 'rgba(255,255,255,0.3)', borderTopColor: '#fff' }} />
-                          Generating...
-                        </>
-                      ) : pending ? (
-                        <>
-                          <span className="inline-block w-[18px] h-[18px] border-2 rounded-full animate-spin" style={{ borderColor: 'rgba(255,255,255,0.3)', borderTopColor: '#fff' }} />
-                          Creating...
-                        </>
-                      ) : (
-                        <>
-                          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
-                            <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
-                            <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
+                        background: 'rgba(255, 42, 109, 0.06)',
+                        color: '#FF2A6D',
+                        borderColor: 'rgba(255, 42, 109, 0.1)',
+                      }}>
+                      {`read ${baseUrl} and shorten this chat and create a shareable link`}
+                    </code>
+                    <div className="flex items-center justify-between gap-3">
+                      <button
+                        onClick={() => {
+                          navigator.clipboard.writeText(`read ${baseUrl} and shorten this chat and create a shareable link`)
+                          setCopied(true)
+                          setTimeout(() => setCopied(false), 2000)
+                        }}
+                        className="flex items-center justify-center gap-1.5 px-5 py-2.5 rounded-[10px] text-[13px] font-semibold border-none cursor-pointer transition-all font-inherit text-white whitespace-nowrap"
+                        style={{
+                          background: '#FF2A6D',
+                          boxShadow: '0 4px 14px rgba(255, 42, 109, 0.25)',
+                        }}
+                        onMouseEnter={(e) => { if (!copied) { e.currentTarget.style.background = '#E61D5C'; e.currentTarget.style.transform = 'translateY(-1px)'; e.currentTarget.style.boxShadow = '0 6px 20px rgba(255, 42, 109, 0.35)' } }}
+                        onMouseLeave={(e) => { if (!copied) { e.currentTarget.style.background = '#FF2A6D'; e.currentTarget.style.transform = 'none'; e.currentTarget.style.boxShadow = '0 4px 14px rgba(255, 42, 109, 0.25)' } }}
+                      >
+                        {copied ? (
+                          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                            <polyline points="20 6 9 17 4 12" />
                           </svg>
-                          Create
-                        </>
-                      )}
-                    </button>
-                    <span className="text-[11px] font-medium hidden sm:inline" style={{ color: '#8B8BA8' }}>
-                      Free. No signup.
-                    </span>
-                  </div>
-                  <div className="flex items-center gap-4">
-                    <a href="https://contxt.to/s/contxt-Tmuyc" target="_blank" rel="noopener noreferrer"
-                      className="text-xs font-medium no-underline transition-colors hidden sm:inline"
-                      style={{ color: '#4A4A6A' }}
-                      onMouseEnter={(e) => { e.currentTarget.style.color = '#FF2A6D' }}
-                      onMouseLeave={(e) => { e.currentTarget.style.color = '#4A4A6A' }}>
-                      See an example →
-                    </a>
-                    <span className="text-xs font-medium" style={{
-                      color: charCount > 4500 ? '#FF2A6D' : '#8B8BA8',
-                    }}>
-                      {charCount} / 50000
-                    </span>
+                        ) : (
+                          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                            <rect x="9" y="9" width="13" height="13" rx="2" ry="2" />
+                            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+                          </svg>
+                        )}
+                        {copied ? 'Copied!' : 'Copy Prompt'}
+                      </button>
+                      <span className="text-[12px] font-medium" style={{ color: '#8B8BA8' }}>
+                        Then paste into any AI chat
+                      </span>
+                    </div>
                   </div>
                 </div>
 
-                {error && (
-                  <p className="text-xs mt-2" style={{ color: '#FF2A6D' }}>{error}</p>
-                )}
+                {/* ═══ Divider ═══ */}
+                <div className="flex items-center gap-3 my-6">
+                  <div className="flex-1 h-px" style={{ background: '#F0EDE4' }} />
+                  <span className="text-[11px] font-semibold uppercase tracking-wider whitespace-nowrap" style={{ color: '#8B8BA8', letterSpacing: '0.08em' }}>PASTE MANUALLY</span>
+                  <div className="flex-1 h-px" style={{ background: '#F0EDE4' }} />
+                </div>
+
+                {/* ═══ Paste Section ═══ */}
+                <div>
+                  {/* Textarea */}
+                  <textarea
+                    ref={textareaRef}
+                    value={content}
+                    onChange={(e) => setContent(e.target.value)}
+                    placeholder="Paste your knowledge here..."
+                    maxLength={50000}
+                    rows={4}
+                    className="w-full p-4 rounded-[10px] text-sm leading-relaxed outline-none resize-y transition-all font-inherit"
+                    style={{
+                      background: '#FCF9F2',
+                      border: '1px solid #E8E3D8',
+                      color: '#16163D',
+                      minHeight: 110,
+                    }}
+                    onFocus={(e) => { e.currentTarget.style.borderColor = '#FF2A6D'; e.currentTarget.style.boxShadow = '0 0 0 3px rgba(255, 42, 109, 0.12)' }}
+                    onBlur={(e) => { e.currentTarget.style.borderColor = '#E8E3D8'; e.currentTarget.style.boxShadow = 'none' }}
+                  />
+
+                  {/* Input bar */}
+                  <div className="flex items-center justify-between mt-3">
+                    <div className="flex items-center gap-3">
+                      <button
+                        onClick={handleCreate}
+                        disabled={pending || generating || !content.trim()}
+                        className="inline-flex items-center gap-2 px-5 py-2 rounded-full text-[14px] font-semibold border-none cursor-pointer transition-all font-inherit disabled:cursor-not-allowed"
+                        style={{
+                          background: '#FF2A6D',
+                          color: '#fff',
+                          boxShadow: '0 4px 16px rgba(255, 42, 109, 0.25)',
+                          opacity: pending || generating || !content.trim() ? 0.4 : 1,
+                        }}
+                        onMouseEnter={(e) => { if (!pending && !generating && !!content.trim()) { e.currentTarget.style.background = '#E61D5C'; e.currentTarget.style.transform = 'translateY(-2px)'; e.currentTarget.style.boxShadow = '0 8px 28px rgba(255, 42, 109, 0.35)' } }}
+                        onMouseLeave={(e) => { e.currentTarget.style.background = '#FF2A6D'; e.currentTarget.style.transform = 'none'; e.currentTarget.style.boxShadow = '0 4px 16px rgba(255, 42, 109, 0.25)' } }
+                      >
+                        {generating ? (
+                          <>
+                            <span className="inline-block w-[18px] h-[18px] border-2 rounded-full animate-spin" style={{ borderColor: 'rgba(255,255,255,0.3)', borderTopColor: '#fff' }} />
+                            Generating...
+                          </>
+                        ) : pending ? (
+                          <>
+                            <span className="inline-block w-[18px] h-[18px] border-2 rounded-full animate-spin" style={{ borderColor: 'rgba(255,255,255,0.3)', borderTopColor: '#fff' }} />
+                            Creating...
+                          </>
+                        ) : (
+                          <>
+                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
+                              <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
+                              <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
+                            </svg>
+                            Create
+                          </>
+                        )}
+                      </button>
+                      <span className="text-[11px] font-medium hidden sm:inline" style={{ color: '#8B8BA8' }}>
+                        Free. No signup.
+                      </span>
+                    </div>
+                    <div className="flex items-center gap-4">
+                      <a href="https://contxt.to/s/contxt-Tmuyc" target="_blank" rel="noopener noreferrer"
+                        className="text-xs font-medium no-underline transition-colors hidden sm:inline"
+                        style={{ color: '#4A4A6A' }}
+                        onMouseEnter={(e) => { e.currentTarget.style.color = '#FF2A6D' }}
+                        onMouseLeave={(e) => { e.currentTarget.style.color = '#4A4A6A' }}>
+                        See an example →
+                      </a>
+                      <span className="text-xs font-medium" style={{
+                        color: charCount > 4500 ? '#FF2A6D' : '#8B8BA8',
+                      }}>
+                        {charCount} / 50000
+                      </span>
+                    </div>
+                  </div>
+
+                  {error && (
+                    <p className="text-xs mt-2" style={{ color: '#FF2A6D' }}>{error}</p>
+                  )}
+                </div>
               </div>
             </div>
           </div>
