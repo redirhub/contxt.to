@@ -181,7 +181,7 @@ export function TabbedExperience() {
               color: C.navy,
             }}>
               Your content,{' '}
-              <em className="italic" style={{ color: C.rose }}>ready</em> for humans &amp; AI.
+              <em className="italic" style={{ color: C.rose }}>ready</em>{' '}for humans &amp; AI.
             </h2>
             <p className="text-[15px] leading-relaxed max-w-[420px]" style={{ color: C.muted }}>
               One link adapts to whoever opens it — a clean reading card for people,
